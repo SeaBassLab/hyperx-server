@@ -10,9 +10,9 @@ import (
 func StartDev(port string) error {
 	r := chi.NewRouter()
 
-	LoadPages(r, "apps/playground/pages")
+	LoadPages(r, "pages")
 	LoadAPI(r)
-	ServeStatic(r, "apps/playground/public")
+	ServeStatic(r, "public")
 
 	addr := fmt.Sprintf(":%s", port)
 	fmt.Printf("🚀 HyperX running at http://localhost%s\n", addr)
