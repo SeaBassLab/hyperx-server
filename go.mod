@@ -1,4 +1,4 @@
-module github.com/hyperx/packages/server
+module github.com/SeaBassLab/hyperx-server
 
 go 1.21
 
