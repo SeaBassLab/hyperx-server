@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/SeaBassLab/hyperx-server/templates"
+	templates "github.com/SeaBassLab/hyperx-templates"
 	"github.com/go-chi/chi/v5"
 )
 

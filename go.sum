@@ -1,2 +1,4 @@
+github.com/SeaBassLab/hyperx-templates v0.0.0-20250526221853-cfb25f82846d h1:+Xyvp6ccNEHf/JAfjezsHurwe72Bqx1t6jjTD/tbm4s=
+github.com/SeaBassLab/hyperx-templates v0.0.0-20250526221853-cfb25f82846d/go.mod h1:2Brb9f8W6IH2+7YkylFnTXykmUQcC3rsHhdG27M/Zbk=
 github.com/go-chi/chi/v5 v5.2.1 h1:KOIHODQj58PmL80G2Eak4WdvUzjSJSm0vG72crDCqb8=
 github.com/go-chi/chi/v5 v5.2.1/go.mod h1:L2yAIGWB3H+phAw1NxKwWM+7eUH/lU8pOMm5hHcoops=
