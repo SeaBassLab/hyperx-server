@@ -22,7 +22,16 @@ func StartServer(env string, port string) error {
 	} else {
 		fmt.Println("🔧 Running in development mode")
 	}
-
+	if env != "prod" {
+		r.Use(func(next http.Handler) http.Handler {
+			return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
+				w.Header().Set("Pragma", "no-cache")
+				w.Header().Set("Expires", "0")
+				next.ServeHTTP(w, r)
+			})
+		})
+	}
 	// Carga de páginas, APIs y archivos estáticos
 	LoadPages(r, env == "prod")
 	LoadAPI(r)
