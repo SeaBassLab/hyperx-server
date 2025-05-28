@@ -16,9 +16,10 @@ import (
 var paramRegex = regexp.MustCompile(`\[[^\]]+\]`)
 
 func LoadPages(r chi.Router, isProd bool) {
-	renderer := templates.NewRenderer("pages", isProd)
+	pagesDir := filepath.Join(getWorkingDir(), "pages")
+	renderer := templates.NewRenderer(pagesDir, isProd)
 
-	err := filepath.WalkDir("pages", func(path string, d fs.DirEntry, err error) error {
+	err := filepath.WalkDir(pagesDir, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
@@ -32,7 +33,7 @@ func LoadPages(r chi.Router, isProd bool) {
 			return nil
 		}
 
-		relPath, _ := filepath.Rel("pages", path)
+		relPath, _ := filepath.Rel(pagesDir, path)
 		route := buildRouteFromFile(relPath)
 
 		page := relPath // necesario para el closure
@@ -89,4 +90,12 @@ func replaceParams(route string) string {
 		param := strings.Trim(match, "[]")
 		return "{" + param + "}"
 	})
+}
+
+func getWorkingDir() string {
+	wd, err := os.Getwd()
+	if err != nil {
+		panic("❌ No se pudo obtener el directorio de trabajo: " + err.Error())
+	}
+	return wd
 }
